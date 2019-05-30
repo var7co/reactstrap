@@ -1,0 +1,1 @@
+- merged  - feat(Dropdown) Add `menuContainer` prop to Dropdown - https://github.com/reactstrap/reactstrap/pull/1513 - https://github.com/var7co/reactstrap/commit/11c20a89fa7f5b5cfbf219dd43bb9af00aafb815
