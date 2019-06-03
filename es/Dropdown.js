@@ -27,7 +27,7 @@ var propTypes = {
   cssModule: PropTypes.object,
   inNavbar: PropTypes.bool,
   setActiveFromChild: PropTypes.bool,
-  menuContainer: targetPropType
+  menuClickTarget: targetPropType
 };
 var defaultProps = {
   isOpen: false,
@@ -64,8 +64,7 @@ function (_React$Component) {
       toggle: this.props.toggle,
       isOpen: this.props.isOpen,
       direction: this.props.direction === 'down' && this.props.dropup ? 'up' : this.props.direction,
-      inNavbar: this.props.inNavbar,
-      menuContainer: this.props.menuContainer
+      inNavbar: this.props.inNavbar
     };
   };
 
@@ -84,8 +83,8 @@ function (_React$Component) {
   };
 
   _proto.getContainer = function getContainer() {
-    if (this.props.menuContainer) {
-      return getTarget(this.props.menuContainer);
+    if (this.props.menuClickTarget) {
+      return getTarget(this.props.menuClickTarget);
     }
 
     return this.containerRef.current;
@@ -210,7 +209,7 @@ function (_React$Component) {
   _proto.render = function render() {
     var _classNames, _ref;
 
-    var _omit = omit(this.props, ['toggle', 'disabled', 'inNavbar']),
+    var _omit = omit(this.props, ['toggle', 'disabled', 'inNavbar', 'menuClickTarget']),
         className = _omit.className,
         cssModule = _omit.cssModule,
         direction = _omit.direction,

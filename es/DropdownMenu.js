@@ -18,12 +18,12 @@ var propTypes = {
   className: PropTypes.string,
   cssModule: PropTypes.object,
   persist: PropTypes.bool,
+  positionFixed: PropTypes.bool,
   container: targetPropType
 };
 var defaultProps = {
   tag: 'div',
-  flip: true,
-  container: 'inline'
+  flip: true
 };
 var noFlipModifier = {
   flip: {
@@ -60,7 +60,8 @@ function (_React$Component) {
         modifiers = _this$props.modifiers,
         persist = _this$props.persist,
         container = _this$props.container,
-        attrs = _objectWithoutPropertiesLoose(_this$props, ["className", "cssModule", "right", "tag", "flip", "modifiers", "persist", "container"]);
+        positionFixed = _this$props.positionFixed,
+        attrs = _objectWithoutPropertiesLoose(_this$props, ["className", "cssModule", "right", "tag", "flip", "modifiers", "persist", "container", "positionFixed"]);
 
     var classes = mapToCssModules(classNames(className, 'dropdown-menu', {
       'dropdown-menu-right': right,
@@ -75,7 +76,8 @@ function (_React$Component) {
       var poperModifiers = !flip ? _objectSpread({}, modifiers, noFlipModifier) : modifiers;
       var popper = React.createElement(Popper, {
         placement: poperPlacement,
-        modifiers: poperModifiers
+        modifiers: poperModifiers,
+        positionFixed: positionFixed
       }, function (_ref) {
         var ref = _ref.ref,
             style = _ref.style,
@@ -92,8 +94,8 @@ function (_React$Component) {
         }));
       });
 
-      if (this.context.menuContainer) {
-        return ReactDOM.createPortal(popper, getTarget(this.context.menuContainer));
+      if (container) {
+        return ReactDOM.createPortal(popper, getTarget(container));
       } else {
         return popper;
       }
